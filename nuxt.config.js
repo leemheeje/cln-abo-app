@@ -1,28 +1,28 @@
 export default {
+  ssr: true,
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'src',
     htmlAttrs: {
-      lang: 'en'
+      lang: 'ko'
     },
-    meta: [
-      { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' },
-      { name: 'format-detection', content: 'telephone=no' }
+    // eslint-disable-next-line prettier/prettier
+    meta: [{
+        name: 'viewport',
+        content: 'width=device-width, initial-scale=1'
+      },
+      {
+        charset: 'utf-8'
+      }
     ],
-    link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
-    ]
+    link: []
   },
-
+  loading: '~/components/common/BxLoading.vue',
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: [
-  ],
+  css: ['~/static/scss/common.scss'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [
-  ],
+  plugins: ['~/plugins/test'],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -35,6 +35,13 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
+    [
+      '@nuxtjs/dotenv',
+      {
+        path: './config/env',
+        filename: `.env.${process.env.NODE_ENV}`
+      }
+    ],
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios'
   ],
@@ -46,6 +53,5 @@ export default {
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {
-  }
+  build: {}
 }
