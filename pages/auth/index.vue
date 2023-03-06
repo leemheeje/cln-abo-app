@@ -1,22 +1,44 @@
 <template>
   <div class="pg-auth-wrap">
-    <input id="pg-gl-id" type="text" />
-    <input id="pg-gl-pw" type="password" />
+    <bx-input-field
+      v-model="testModel"
+      placeholder="asdf"
+      :dir-focus="true"
+      :is-error="true"
+      info-message="에러메sdfsdf시지?"
+    />
+    <bx-input-field
+      v-model="testModel2"
+      placeholder="asdf"
+      :dir-focus="true"
+      :is-error="true"
+      info-message="에러메시지?"
+    />
+    <input id="pg-gl-pw" v-model="testModel2" type="password" />{{ testModel2 }}
     <button>button</button>
     <button v-if="!isAuthKakao" @click="handlerAuthSnsLogin('kakao')">카카오</button>
     <template v-else>
       <button @click="handlerAuthSnsLogout('kakao')">로그아웃</button>
     </template>
     {{ getAuthKakaoUserInfo }}
+    {{ testModel }}
   </div>
 </template>
 <script>
+import BxInputField, {INPUT_FILTER} from '~/components/common/BxInputField'
 export default {
+  components: {
+    BxInputField
+  },
   data() {
     return {
       userInfo: null,
       Kakao: null,
-      isAuthKakaoToken: ``
+      isAuthKakaoToken: ``,
+      // test
+      testModel: '',
+      INPUT_FILTER,
+      testModel2: ''
     }
   },
   head() {

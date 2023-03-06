@@ -1,2 +1,36 @@
-.util {
+/* color */
+$COLOR_BLACK : #000;
+$COLOR_WHITE : #fff;
+$COLOR_DDD: #ddd;
+$COLOR_BBB: #bbb;
+$COLOR_PRIMERY: #ED1B35;
+$COLOR_SECOND: #2F2F4C;
+$COLOR_ERROR : #fd302c;
+$COLOR_COMPLETE : blue;
+/* form-height */
+$FORM_HEIGHT : 45px;
+/* fonts */
+// $FONT_FAMILY: "nskr",-apple-system,"droid sans fallback","Apple SD Gothic Neo","AppleGothic","Malgun Gothic",Dotum,sans-serif;
+$FONT_INITIAL_SIZE: 16px;
+$FONT_SIZE_XSM: 12px;
+$FONT_SIZE_SM: 14px;
+$FONT_SIZE: 16px;
+$FONT_SIZE_LG: 18px;
+$FONT_SIZE_XLG: 20px;
+$FONT_WEIGHT_BOLD : 700;
+$FONT_WEIGHT_NORMAL : 400;
+$FONT_WEIGHT_REGULAR : 100;
+/* flex */
+
+/* convert rem */
+@function to-rem($v1){
+	@return $v1/$FONT_INITIAL_SIZE*1rem
 }
+/* mixins */
+/* @include align-center or align-center('inline-flex') */
+@mixin align-center($flex:'flex'){
+	display: $flex;
+	align-items: center;
+	justify-content: center;
+}
+

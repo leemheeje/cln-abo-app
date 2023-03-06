@@ -1,0 +1,95 @@
+@import '../util.scss';
+@mixin input-size{
+	color: $COLOR_BLACK;
+	height: to-rem($FORM_HEIGHT);
+	display: block;
+	font-size: to-rem($FONT_SIZE);
+	font-weight: $FONT_WEIGHT_NORMAL;
+	text-indent: to-rem(10px);
+	background: inherit;
+}
+.bx-input-field{
+	padding: 20px;
+	display: block;
+	.bx-inner{
+		display: flex;
+		border: to-rem(2px) solid $COLOR_DDD;
+		border-radius: to-rem(8px);
+		background: #f5f5f5;
+		.bx-infar{
+			width: 100%;
+			.bx-inf{
+				width: 100%;
+				@include input-size;
+				&::placeholder{
+					color: #999;
+				}
+				&:focus{
+					outline: none !important;
+					border: 1px dotted #000;
+				}
+			}
+		}
+		.bx-eto{
+			display: flex;
+			align-items: center;
+			justify-content: end;
+			.de-btn-ar{
+				padding: to-rem(3px);
+				.de-btn{
+					$width : to-rem(35px / 2);
+					$height : to-rem(35px / 2);
+					width: $width;
+					height: $height;
+					font-size: 0;
+					line-height: 0;
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					border-radius: 50%;
+					background: $COLOR_DDD;
+					position: relative;
+					cursor: pointer;
+					&:after, &:before{
+						content: '';
+						width: $width/2;
+						height: 1px;
+						position: absolute;
+						left: 50%;
+						top: 50%;
+						background: #fff;
+						transform-origin: center center;
+						margin-top: -1px;
+						margin-left: 1px;
+					}
+					&:before{
+						transform: translateX(-50%) rotate(45deg);
+					}
+					&:after{
+						transform: translateX(-50%) rotate(-45deg);
+					}
+				}
+			}
+		}
+	}
+	&.is-focus .bx-inner{
+		background: #fff;
+	}
+	&.is-error .bx-inner{
+		border-color: $COLOR_ERROR;
+	}
+	.bx-msgs{
+		display: flex;
+		margin-top: to-rem(5px);
+		font-size: to-rem($FONT_SIZE_SM);
+		word-break: break-all;
+		color: $COLOR_BLACK;
+		font-weight: $FONT_WEIGHT_NORMAL;
+	}
+	&.is-error .bx-msgs{
+		color: $COLOR_ERROR;
+	}
+	&.is-complete .bx-msgs{
+		color: $COLOR_COMPLETE;
+	}
+}

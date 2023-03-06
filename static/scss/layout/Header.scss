@@ -1,0 +1,24 @@
+@import '../util.scss';
+
+.bx-header{
+	border-bottom: 1px solid #ddd;
+	.bx-header-inner{
+		.inner-section{
+			padding: to-rem(10px) to-rem(15px);
+			display: flex;
+			align-items: center;
+			& .h-logo{}
+			& .h-artc-area{
+				margin-left: auto;
+				margin-right: 0;
+			}
+		}
+		.h-logo{}
+		.h-artc-area{
+			display: flex;
+			align-items: center;
+			justify-content: end;
+			.h-search-ar{}
+		}
+	}
+}

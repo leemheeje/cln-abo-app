@@ -1,5 +1,7 @@
-@import url(./util.scss);
+@import './util.scss';
 
-body {
-  background: #ddd;
-}
+html{-webkit-tap-highlight-color: rgba(0,0,0,0); font-size: 16px; }
+*{margin: 0; padding: 0; border: none; appearance: none; box-sizing: border-box;}
+button,input,textarea,select{box-shadow: none; border:none; margin: 0; font-family: inherit; font-size: inherit; line-height: inherit;text-transform: none; background: inherit;}
+.blind{position: absolute; left: 0; top: 0; width: 0; height: 0; opacity: 0; overflow: hidden;}
+.inner-section{min-width: 960px; width: 100%;}
