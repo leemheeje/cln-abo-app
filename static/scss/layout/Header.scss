@@ -1,10 +1,10 @@
 @import '../util.scss';
 
 .bx-header{
-	border-bottom: 1px solid #ddd;
+	border-bottom: 1px solid $COLOR_DDD;
 	.bx-header-inner{
 		.inner-section{
-			padding: to-rem(10px) to-rem(15px);
+			padding: to-rem(20px) to-rem($DEVICE_AUTO_MARGIN);
 			display: flex;
 			align-items: center;
 			& .h-logo{}
@@ -18,7 +18,30 @@
 			display: flex;
 			align-items: center;
 			justify-content: end;
-			.h-search-ar{}
+			gap: to-rem(5px);
+			.h-search-ar{
+				margin-right: to-rem(10px);
+				.bx-input-field.h-sea-inf{
+					.bx-inner{
+						border-radius: to-rem($FORM_HEIGHT * $SIZE_RATIO_SM);
+						min-width: to-rem(320px);
+						padding-right: to-rem(($FORM_HEIGHT * $SIZE_RATIO_SM) / 2);
+						.bx-inf{
+							text-indent: to-rem(($FORM_HEIGHT * $SIZE_RATIO_SM) / 2);
+						}
+					}
+				}
+				.h-sea-bt{}
+			}
+			.h-et-atic{
+				width: to-rem($FORM_HEIGHT * $SIZE_RATIO_XSM);
+				height: to-rem($FORM_HEIGHT * $SIZE_RATIO_XSM);
+				border-radius: to-rem($FORM_BORDER_RADIUS * $SIZE_RATIO_XSM);
+				background-color: $COLOR_F2;
+				.ic{
+					color: #000;
+				}
+			}
 		}
 	}
 }

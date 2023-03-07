@@ -1,6 +1,6 @@
 <template>
-  <footer class="bx-footer">
-    <div class="bx-footer-inner">bx-footer-inner</div>
+  <footer class="bx-footer" style="display: none">
+    <div class="bx-footer-inner">copyright</div>
   </footer>
 </template>
 <script>

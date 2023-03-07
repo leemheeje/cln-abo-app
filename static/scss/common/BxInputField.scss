@@ -1,20 +1,26 @@
 @import '../util.scss';
-@mixin input-size{
+@mixin input-size($size:md){
 	color: $COLOR_BLACK;
-	height: to-rem($FORM_HEIGHT);
 	display: block;
-	font-size: to-rem($FONT_SIZE);
 	font-weight: $FONT_WEIGHT_NORMAL;
 	text-indent: to-rem(10px);
 	background: inherit;
+	@if $size == md{
+		height: to-rem($FORM_HEIGHT);
+		font-size: to-rem($FONT_SIZE);
+	} @else if $size == xsm{
+		height: to-rem($FORM_HEIGHT * $SIZE_RATIO_XSM);
+		font-size: to-rem($FONT_SIZE * $SIZE_RATIO_XSM);
+	} @else if $size == sm{
+		height: to-rem($FORM_HEIGHT * $SIZE_RATIO_SM);
+		font-size: to-rem($FONT_SIZE * $SIZE_RATIO_SM);
+	}
 }
 .bx-input-field{
-	padding: 20px;
-	display: block;
 	.bx-inner{
 		display: flex;
-		border: to-rem(2px) solid $COLOR_DDD;
-		border-radius: to-rem(8px);
+		border: to-rem(1px) solid $COLOR_DDD;
+		border-radius: to-rem($FORM_BORDER_RADIUS);
 		background: #f5f5f5;
 		.bx-infar{
 			width: 100%;
@@ -60,7 +66,7 @@
 						background: #fff;
 						transform-origin: center center;
 						margin-top: -1px;
-						margin-left: 1px;
+						margin-left: 0px;
 					}
 					&:before{
 						transform: translateX(-50%) rotate(45deg);
@@ -77,6 +83,32 @@
 	}
 	&.is-error .bx-inner{
 		border-color: $COLOR_ERROR;
+	}
+	&.size{
+		&-md{
+			.bx-inner{
+				border-radius: to-rem($FORM_BORDER_RADIUS * $SIZE_RATIO_MD);
+			}
+			.bx-infar .bx-inf{
+				@include input-size(md);
+			}
+		}
+		&-xsm{
+			.bx-inner{
+				border-radius: to-rem($FORM_BORDER_RADIUS * $SIZE_RATIO_XSM);
+			}
+			.bx-infar .bx-inf{
+				@include input-size(xsm);
+			}
+		}
+		&-sm{
+			.bx-inner{
+				border-radius: to-rem($FORM_BORDER_RADIUS * $SIZE_RATIO_SM);
+			}
+			.bx-infar .bx-inf{
+				@include input-size(sm);
+			}
+		}
 	}
 	.bx-msgs{
 		display: flex;

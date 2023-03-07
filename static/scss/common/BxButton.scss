@@ -1,6 +1,72 @@
 @import '../util.scss';
 
-.bx-button{
-	.b-btn{}
-	.b-link{}
+$INIT_BORDER_SIZE : 1px;
+$INIT_SIZE : $FONT_SIZE; //16
+$INIT_WEIGHT: $FONT_WEIGHT_NORMAL; //500
+$INIT_HEIGHT: $FORM_HEIGHT; //45px
+$INIT_PADDING: 10px;
+
+@mixin FN_PADDING($size : md){
+	@if $size == md{
+		padding: 0 to-rem($INIT_PADDING)
+	}@else if $size == xsm{
+		padding: 0 to-rem($INIT_PADDING) * $SIZE_RATIO_XSM
+	}@else if $size == sm{
+		padding: 0 to-rem($INIT_PADDING) * $SIZE_RATIO_SM
+	} @else if $size == lg{
+		padding: 0 to-rem($INIT_PADDING) * $SIZE_RATIO_LG
+	}
 }
+@mixin FN_BTN_SIZE($size : md){
+	@include FN_PADDING($size);
+	font-weight: $INIT_WEIGHT;
+	border-style: solid;
+	border-width: $INIT_BORDER_SIZE;
+	@if $size == md {
+		height: to-rem($INIT_HEIGHT);
+		border-radius: to-rem($FORM_BORDER_RADIUS);
+		font-size: $INIT_SIZE;
+	} @else if $size == xsm {
+		height: to-rem($INIT_HEIGHT) * $SIZE_RATIO_XSM;
+		border-radius: to-rem($FORM_BORDER_RADIUS) * $SIZE_RATIO_XSM;
+		font-size: $INIT_SIZE * $SIZE_RATIO_XSM;
+	} @else if $size == sm {
+		height: to-rem($INIT_HEIGHT) * $SIZE_RATIO_SM;
+		border-radius: to-rem($FORM_BORDER_RADIUS) * $SIZE_RATIO_SM;
+		font-size: $INIT_SIZE * $SIZE_RATIO_SM;
+	} @else if $size == lg {
+		height: to-rem($INIT_HEIGHT) * $SIZE_RATIO_LG;
+		border-radius: to-rem($FORM_BORDER_RADIUS) * $SIZE_RATIO_LG;
+		font-size: $INIT_SIZE * $SIZE_RATIO_LG;
+	}
+}
+.bx-button{
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: to-rem(3px);
+	box-shadow: none;
+	cursor: pointer;
+	&.size{
+		&-md{ 
+			@include FN_BTN_SIZE(md);
+		}
+		&-xsm{
+			@include FN_BTN_SIZE(xsm);
+		}
+		&-sm{
+			@include FN_BTN_SIZE(sm);
+		}
+		&-lg{
+			@include FN_BTN_SIZE(lg);
+		}
+	}
+	&.primery{ background-color: $BUTTON_COLOR_PRIMERY; border-color:$BUTTON_COLOR_PRIMERY; color: #fff;}
+	&.secondary{ background-color: $BUTTON_COLOR_SECONDARY; border-color:$BUTTON_COLOR_SECONDARY; color: #fff;}
+	&.success{ background-color: $BUTTON_COLOR_SUCCESS; border-color:$BUTTON_COLOR_SUCCESS; color: #fff;}
+	&.danger{ background-color: $BUTTON_COLOR_DANGER; border-color:$BUTTON_COLOR_DANGER; color: #fff;}
+	&.warning{ background-color: $BUTTON_COLOR_WARNING; border-color:$BUTTON_COLOR_WARNING; color: $BUTTON_COLOR_DARK;}
+	&.info{ background-color: $BUTTON_COLOR_INFO; border-color:$BUTTON_COLOR_INFO; color: #fff;}
+	&.dark{ background-color: $BUTTON_COLOR_DARK; border-color:$BUTTON_COLOR_DARK; color: #fff;}
+}
+.bx-link{}

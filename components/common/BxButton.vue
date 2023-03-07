@@ -1,10 +1,8 @@
 <template>
-  <component :is="tag" v-if="!href" class="bx-button" :class="className[0]">
-    <button :id="id || localId" class="b-btn" :class="className[1]" :title="title" :name="name" @click="onClick">
-      <slot />
-    </button>
-  </component>
-  <a v-else :href="href" :target="target" class="bx-link" :class="className[0]" :title="title" :name="name">
+  <button v-if="!href" :id="id || localId" class="bx-button" :title="title" :name="name" @click="onClick">
+    <slot />
+  </button>
+  <a v-else :href="href" :target="target" class="bx-link" :title="title" :name="name">
     <slot />
   </a>
 </template>
@@ -12,7 +10,6 @@
 import {getUUID} from '~/utils/StringUtil'
 export default {
   props: {
-    className: {type: Array, default: () => ['', '']},
     id: {type: String, default: ''},
     tag: {type: String, default: 'span'},
     title: {type: String, default: ''},

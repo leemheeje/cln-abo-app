@@ -1,8 +1,8 @@
 @import '../util.scss';
 
 .bx-footer{
-	height: 50px;
-	background: #ddd;
+	height: to-rem(50px);
+	border-top: 1px solid $COLOR_DDD;
 	.bx-footer-inner{
 
 	}

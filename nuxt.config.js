@@ -22,8 +22,17 @@ export default {
   css: ['~/static/scss/common.scss'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: ['~/plugins/test'],
-
+  plugins: [
+    '~/plugins/test',
+    {
+      src: '~/plugins/bootstrap',
+      client: true
+    }
+  ],
+  bootstrapVue: {
+    bootstrapCSS: false,
+    icons: true
+  },
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
 

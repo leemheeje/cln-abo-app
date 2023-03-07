@@ -1,0 +1,48 @@
+@import '../util.scss';
+
+.bx-aside {
+	padding: to-rem(40px) to-rem($DEVICE_AUTO_MARGIN);
+	.lb-lst{
+		list-style: none;
+		.tps{
+			.t-txt{
+				display: block;
+				width: 100%;
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				text-align: left;
+				font-size: to-rem($FONT_SIZE_SM);
+				padding: to-rem(18px) to-rem(28px);
+				border-radius: to-rem(16px);
+				box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.05);
+				background-color: #fff;
+				letter-spacing: -0.42px;
+				font-weight: $FONT_WEIGHT_REGULAR;
+				color: $COLOR_BLACK;
+				position: relative;
+				&:after{
+					content: '';
+					width: to-rem(5px);
+					height: to-rem(5px);
+					border: to-rem(1px) solid #999;
+					border-left: none;
+					border-bottom: none;
+					position: absolute;
+					right: to-rem(28px);
+					top: 50%;
+					transform: translateY(-50%) rotate(45deg);
+				}
+				&.active{
+					color: $COLOR_PRIMERY;
+					&:after{
+						border-color: $COLOR_PRIMERY;
+					}
+				}
+			}
+		}
+		.tps+.tps{
+			margin-top: to-rem(5px);
+		}
+	}
+}

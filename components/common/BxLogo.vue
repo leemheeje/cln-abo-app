@@ -1,15 +1,27 @@
 <template>
-  <bx-button href="/" :class-name="['gl-logo']" title="로고">
+  <bx-button href="/" class="gl-logo" :class="type" title="로고">
     <span class="blind">서비스BI</span>
-    <span class="b">6</span>
-    <span class="o">O</span>
-    Bab
+    <template v-if="type === 'design2'">
+      <span class="b">O</span>
+      <span class="o">O</span>
+      Bab
+    </template>
   </bx-button>
 </template>
+
 <script>
 import BxButton from '~/components/common/BxButton'
 export default {
-  components: {BxButton}
+  components: {BxButton},
+  props: {
+    type: {
+      type: String,
+      default: 'design1',
+      validator: (value) => {
+        return ['design1', 'design2'].includes(value)
+      }
+    }
+  }
 }
 </script>
 <style lang="scss" scoped>
@@ -23,26 +35,26 @@ export default {
   align-items: center;
   cursor: pointer;
   text-decoration: none;
-  padding-left: to-rem(32px);
+  padding-left: to-rem(30px);
   font-weight: $FONT_WEIGHT_BOLD;
   color: #000;
-  font-size: to-rem(21px);
-  letter-spacing: to-rem(-0.4px);
-  .b {
-    color: $COLOR_SECOND;
-  }
+  font-size: to-rem(20px);
+  letter-spacing: to-rem(-0px);
+  .b,
   .o {
     color: transparent;
     position: relative;
+    font-size: to-rem(18px);
     &:before {
       content: '';
-      width: to-rem(7px);
-      height: to-rem(7px);
-      border: to-rem(4px) solid $COLOR_PRIMERY;
-      border-left-color: $COLOR_SECOND;
-      border-bottom-color: $COLOR_SECOND;
+      width: to-rem(9px);
+      height: to-rem(9px);
+      border: to-rem(2px) solid $COLOR_PRIMERY;
+      border-top-color: $COLOR_SECONDARY;
+      border-right-color: $COLOR_SECONDARY;
       position: absolute;
-      left: to-rem(1px);
+      left: 50%;
+      transform: translateX(-50%);
       top: to-rem(8px);
       border-radius: 50%;
     }
