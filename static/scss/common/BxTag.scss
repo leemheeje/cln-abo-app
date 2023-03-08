@@ -1,0 +1,19 @@
+@import '../util.scss';
+
+.bx-tag{
+	$height : 30px;
+	display: inline-flex;
+	font-size: to-rem($FONT_SIZE_XSM);
+	color: $COLOR_666;
+	font-weight: $FONT_WEIGHT_NORMAL;
+	padding: 0 to-rem(10px);
+	height: to-rem($height);
+	align-items: center;
+	border-radius: to-rem(calc($height / 2));
+	border: 1px solid $COLOR_DDD;
+	white-space: nowrap;
+	&:hover{
+		border-color: $COLOR_BLACK;
+		color: $COLOR_BLACK;
+	}
+}

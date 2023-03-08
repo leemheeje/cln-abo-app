@@ -1,11 +1,5 @@
 <template>
-  <div
-    v-if="loading"
-    class="bx-loading"
-    style="position: absolute; left: 0; top: 0; z-index: 1000; background: gray; width: 100%; height: 100%"
-  >
-    123123123123123123555555555555
-  </div>
+  <div v-if="loading" class="bx-loading"></div>
 </template>
 
 <script>
@@ -28,3 +22,24 @@ export default {
   }
 }
 </script>
+<style lang="scss" scoped>
+.bx-loading {
+  height: 1px;
+  background: #c82333;
+  width: 0;
+  display: block;
+  position: fixed;
+  left: 0;
+  top: 0;
+  animation: loading 0.5s ease-in-out;
+  z-index: 99;
+}
+@keyframes loading {
+  to {
+    width: 100%;
+  }
+  from {
+    width: 0%;
+  }
+}
+</style>

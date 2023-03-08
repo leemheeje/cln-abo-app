@@ -3,13 +3,13 @@
     <div class="bx-post-inner">
       <!-- 탑영역:S -->
       <div class="bpw-top">
-        <span class="bc-thumb">
+        <button class="bc-thumb">
           <img
             :src="`https://p16-sign-sg.tiktokcdn.com/aweme/100x100/tos-alisg-avt-0068/3a777862c25617fb57cf5994c68db496.jpeg?x-expires=1678345200&x-signature=9olWY3kYPIOcOFMQiXVxt0K6oGY%3D`"
             alt=""
             class="img"
           />
-        </span>
+        </button>
         <div class="bc-cop">
           <button class="b-ti">
             cjttkfkd00
@@ -62,6 +62,13 @@
       <div class="bpw-btm">
         <div class="b-tt">베스트댓글</div>
         <div class="bc-reply">
+          <button class="bc-thumb">
+            <img
+              :src="`https://p16-sign-sg.tiktokcdn.com/aweme/100x100/tos-alisg-avt-0068/3a777862c25617fb57cf5994c68db496.jpeg?x-expires=1678345200&x-signature=9olWY3kYPIOcOFMQiXVxt0K6oGY%3D`"
+              alt=""
+              class="img"
+            />
+          </button>
           <button class="b-ti">
             cjttkfkd00
             <div class="b-n">첫사랑찾았어요</div>

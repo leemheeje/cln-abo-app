@@ -2,6 +2,12 @@
 
 .bx-header{
 	border-bottom: 1px solid $COLOR_DDD;
+	position: fixed;
+	left: 0;
+	width: 100%;
+	top: 0;
+	background: #fff;
+	z-index: 1;
 	.bx-header-inner{
 		.inner-section{
 			padding: to-rem(20px) to-rem($DEVICE_AUTO_MARGIN);

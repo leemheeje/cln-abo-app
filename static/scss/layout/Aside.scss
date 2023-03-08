@@ -4,6 +4,7 @@
 	padding: to-rem(40px) to-rem($DEVICE_AUTO_MARGIN);
 	.lb-lst{
 		list-style: none;
+		margin-bottom: to-rem(30px);
 		.tps{
 			.t-txt{
 				display: block;
@@ -44,5 +45,46 @@
 		.tps+.tps{
 			margin-top: to-rem(5px);
 		}
+	}
+	.up-alst-area{
+		margin-bottom: to-rem(30px);
+		.u-alst{
+			list-style: none;
+			.tps{
+				.t-txt{
+					width: 100%;
+					justify-content: flex-start;
+					text-align: left;
+				}
+				.bc-thumb{
+					@include fn_thumbnail(xsm)
+				}
+				.b-ti{
+					font-size: to-rem($FONT_SIZE_SM);
+					display: flex;
+					flex-direction: column;
+					color: $COLOR_BLACK;
+					font-weight: $FONT_WEIGHT_NORMAL;
+					.b-n{
+						font-size: to-rem($FONT_SIZE_XSM);
+						color: $COLOR_888;
+						font-weight: $FONT_WEIGHT_REGULAR;
+					}
+				}
+			}
+			.tps+.tps{
+				margin-top: to-rem(8px);
+			}
+		}
+	}
+	.b-tit{
+		font-size: to-rem($FONT_SIZE_SM);
+		color: $BUTTON_COLOR_SECONDARY;
+		text-align: left;
+		display: flex;
+		justify-content: flex-start;
+		font-weight: $FONT_WEIGHT_REGULAR;
+		line-height: 1.5;
+		margin-bottom: to-rem(15px);
 	}
 }

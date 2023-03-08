@@ -1,6 +1,16 @@
 <template>
   <div class="page-post-view">
-    <bx-post v-for="(item, index) in [0, 0]" :key="index" />
+    <bx-post
+      v-for="(item, index) in [0, 0]"
+      :key="index"
+      :style="
+        index
+          ? {
+              marginTop: '50px'
+            }
+          : ''
+      "
+    />
   </div>
 </template>
 
