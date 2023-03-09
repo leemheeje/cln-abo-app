@@ -68,5 +68,10 @@ $INIT_PADDING: 10px;
 	&.warning{ background-color: $BUTTON_COLOR_WARNING; border-color:$BUTTON_COLOR_WARNING; color: $BUTTON_COLOR_DARK;}
 	&.info{ background-color: $BUTTON_COLOR_INFO; border-color:$BUTTON_COLOR_INFO; color: #fff;}
 	&.dark{ background-color: $BUTTON_COLOR_DARK; border-color:$BUTTON_COLOR_DARK; color: #fff;}
+	&.block{width: 100%; display: flex;}
+	&.outline{
+		background-color: transparent !important;
+		&.primery{color: $BUTTON_COLOR_PRIMERY;}
+	}
 }
 .bx-link{}

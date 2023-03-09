@@ -25,18 +25,14 @@
             <bx-icon class="ic" icon="people-fill" title="회원가입 아이콘" />
             <span class="fs">회원가입</span>
           </bx-button>
-          <bx-button class="size-xsm secondary h-et-btic" title="로그아웃 버튼">
+          <!-- <bx-button class="size-xsm secondary h-et-btic" title="로그아웃 버튼">
             <bx-icon class="ic" icon="person-dash-fill" title="로그아웃 아이콘" />
             <span class="fs">로그아웃</span>
           </bx-button>
           <bx-button class="size-xsm info h-et-btic" title="마이페이지 버튼">
             <bx-icon class="ic" icon="person-lines-fill" title="마이페이지 아이콘" />
             <span class="fs">마이페이지</span>
-          </bx-button>
-          <bx-button class="size-xsm primery h-et-btic" title="컨텐츠 등록 버튼">
-            <bx-icon class="ic" icon="pencil-square" title="컨텐츠 등록 아이콘" />
-            <span class="fs">컨텐츠 등록</span>
-          </bx-button>
+          </bx-button> -->
           <bx-button class="h-et-atic" title="메뉴 버튼">
             <bx-icon class="ic" icon="list-nested" title="메뉴 아이콘" />
           </bx-button>
@@ -51,7 +47,11 @@ import BxButton from '~/components/common/BxButton'
 import BxInputField from '~/components/common/BxInputField'
 import BxIcon from '~/components/common/BxIcon'
 export default {
-  components: {BxLogo, BxButton, BxInputField, BxIcon}
+  components: {BxLogo, BxButton, BxInputField, BxIcon},
+  fetch() {
+    console.log('Header.vue.fetch ===================', process.server)
+  },
+  fetchOnServer: false
 }
 </script>
 <style lang="scss">

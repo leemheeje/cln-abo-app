@@ -6,9 +6,6 @@ export default {
   props: {
     tag: {type: String, default: 'button'}
   },
-  mounted() {
-    console.log(`bxTag-----------------`, this.tag)
-  },
   methods: {
     onClick(e) {
       this.$emit('click', e)

@@ -4,7 +4,12 @@
   </footer>
 </template>
 <script>
-export default {}
+export default {
+  fetch() {
+    console.log('Footer.vue.fetch ===================', process.server)
+  },
+  fetchOnServer: false
+}
 </script>
 <style lang="scss" scoped>
 @import '~/static/scss/layout/Footer.scss';

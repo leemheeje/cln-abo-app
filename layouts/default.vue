@@ -4,25 +4,32 @@
       <Header />
     </div>
     <div class="glb-container">
-      <aside class="gl-aside">
-        <Aside />
-      </aside>
-      <div class="gl-contents">
-        <div class="inner-section">
-          <div class="cont-injt">
-            <div class="cnt-tit">
-              <span class="c-tit">컨텐츠 등록</span>
-              <p class="b-tit">
-                계정을 연결해야 구독 가입이 완료되며, 계정 연결 전까지는 구독료가 발생하지 않습니다.<br />
-                신청일 이후 40일 내에 계정을 연결해 주세요. 40일이 지나면 자동으로 삭제됩니다.
-              </p>
+      <div class="glb-cont-inner">
+        <div class="gl-contents">
+          <div class="inner-section">
+            <div class="cont-injt">
+              <div class="cnt-bred">
+                <bx-breadcamb :items="getPageInfo.category" />
+              </div>
             </div>
-            <div class="cnt-bred">
-              <Breadcamb />
-            </div>
+            <Nuxt />
           </div>
-          <Nuxt />
         </div>
+        <aside class="gl-aside">
+          <div class="c-tit" @click="_globalMixin">{{ getPageInfo.title }}</div>
+          <template v-if="$route.name === 'post-create'"> dsfgsdgsdg123</template>
+          <template v-else>
+            <bx-button
+              class="size-lg outline block primery"
+              title="컨텐츠 등록 버튼"
+              style="max-width: 75%"
+              @click="$router.push({name: 'post-create'})"
+            >
+              <span class="fs">컨텐츠 등록</span>
+            </bx-button>
+            <Aside />
+          </template>
+        </aside>
       </div>
     </div>
     <div class="glb-footer">
@@ -34,9 +41,13 @@
 import Header from '~/components/layout/Header'
 import Footer from '~/components/layout/Footer'
 import Aside from '~/components/layout/Aside'
-import Breadcamb from '~/components/common/Breadcamb'
+import BxBreadcamb from '~/components/common/BxBreadcamb'
+import mixinDefault from '~/mixins/default'
+import BxButton from '~/components/common/BxButton'
+
 export default {
-  components: {Header, Footer, Aside, Breadcamb}
+  components: {Header, Footer, Aside, BxBreadcamb, BxButton},
+  mixins: [mixinDefault]
 }
 </script>
 <style lang="scss" scoped>

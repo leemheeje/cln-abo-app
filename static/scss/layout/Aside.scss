@@ -1,7 +1,7 @@
 @import '../util.scss';
 
 .bx-aside {
-	padding: to-rem(40px) to-rem($DEVICE_AUTO_MARGIN);
+	padding: to-rem(20px) 0;
 	.lb-lst{
 		list-style: none;
 		margin-bottom: to-rem(30px);

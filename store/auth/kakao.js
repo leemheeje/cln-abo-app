@@ -1,13 +1,13 @@
 import {KAKAO_APP_TOKEN} from '~/config/develop_kakao'
 
-export const state = {
+export const state = () => ({
   isAuth: false,
   kakaoToken: '',
   userNm: '',
   userEmail: '',
   userJender: '',
   userThumbnail: ''
-}
+})
 export const getters = {
   isAuth(state) {
     return state.isAuth
