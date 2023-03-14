@@ -1,4 +1,9 @@
 export default {
+  data() {
+    return {
+      dialogs: []
+    }
+  },
   computed: {
     getPageInfo() {
       return this.$store.getters['common/getPageInfo']
@@ -7,6 +12,11 @@ export default {
   head() {
     return {
       title: this.getPageInfo.title
+    }
+  },
+  created() {
+    if (process.client) {
+      console.log('diag - mixin------')
     }
   },
   mounted() {

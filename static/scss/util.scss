@@ -53,7 +53,6 @@ $FONT_WEIGHT_BOLD : 700;
 $FONT_WEIGHT_NORMAL : 500;
 $FONT_WEIGHT_REGULAR : 300;
 /* flex */
-
 /* convert rem */
 @function to-rem($v1){
 	@return calc($v1 / $FONT_INITIAL_SIZE) * 1rem

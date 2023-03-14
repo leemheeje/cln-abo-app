@@ -1,9 +1,8 @@
 <template>
-  <div class="page-post-create">asdfasdasdfsdfasdffsasdfdfsdfsdfsdfsa</div>
+  <postCreate />
 </template>
 <script>
-import _cloneDeep from 'lodash/cloneDeep'
-
+import postCreate from '~/components/page/post-create/'
 export const setPageInfo = Object.freeze({
   title: '컨텐츠등록',
   category: [
@@ -16,7 +15,7 @@ export const setPageInfo = Object.freeze({
 
 export default {
   name: 'PostCreate',
-  components: {},
+  components: {postCreate},
   async asyncData({store, route}) {
     const {fullPath, path, name, query} = route
     await store.dispatch('common/setPageInfo', {
@@ -26,6 +25,11 @@ export default {
       query,
       ...setPageInfo
     })
+  },
+  created() {
+    if (process.client) {
+      console.log('diag - page------')
+    }
   }
 }
 </script>

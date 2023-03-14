@@ -30,8 +30,7 @@ export default {
     }
   ],
   bootstrapVue: {
-    bootstrapCSS: false,
-    icons: true
+    bootstrapCSS: false
   },
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,

@@ -1,7 +1,8 @@
 @import './util.scss';
 @import './font.css';
 
-html{-webkit-tap-highlight-color: rgba(0,0,0,0); font-size: 16px; font-family: $FONT_FAMILY; letter-spacing: -.45px;}
+html{-webkit-tap-highlight-color: rgba(0,0,0,0); font-size: $FONT_INITIAL_SIZE;}
+html body{font-size: $FONT_INITIAL_SIZE; font-family: $FONT_FAMILY; letter-spacing: -.45px; line-height: 1.5; color: #000; background-color: transparent; font-weight: initial;}
 *{margin: 0; padding: 0; border: none; appearance: none; box-sizing: border-box;}
 button,input,textarea,select{box-shadow: none; border:none; margin: 0; font-family: inherit; font-size: inherit; line-height: inherit;text-transform: none; background: inherit;}
 button{cursor: pointer;}
@@ -13,4 +14,50 @@ button{cursor: pointer;}
 .INLINE_FLEX.CENTER_CENTER{
 	align-items: center;
 	justify-content: center;
+}
+
+/* 컨텐츠등록 */
+.page-post-create{
+	$init:100%;
+	.cro-lst{
+		list-style: none;
+		display: flex;
+		flex-direction: column;
+		.cr-item+.cr-item{
+			margin-top: to-rem(10px);
+		}
+		.cr-item{
+			$buttonSize: 45px;
+			display: flex;
+			flex-wrap: wrap;
+			position: relative;
+			.opt-area{
+				display: flex;
+				align-items: center;
+				justify-content: flex-end;
+				position: sticky;
+				height: fit-content;
+				left: to-rem(-$buttonSize);
+				top: to-rem(100px);
+				.op-btn{
+					width: to-rem($buttonSize);
+					height: to-rem($buttonSize);
+					border-radius: to-rem(3px);
+					border-top-right-radius: 0;
+					border-bottom-right-radius: 0;
+					background: $COLOR_F2;
+					.bx-icon{
+						color: $COLOR_SECONDARY;
+						font-size: 1rem;
+					}
+				}
+			}
+			.ite-box{
+				overflow: hidden;
+				width: calc(100% - $buttonSize);
+				min-height: 480px;
+				background: $COLOR_F2;
+			}
+		}
+	}
 }

@@ -15,6 +15,7 @@
 				text-align: left;
 				font-size: to-rem($FONT_SIZE_SM);
 				padding: to-rem(18px) to-rem(28px);
+				padding-left: to-rem(60px);
 				border-radius: to-rem(16px);
 				box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.05);
 				background-color: #fff;
@@ -30,9 +31,9 @@
 					border-left: none;
 					border-bottom: none;
 					position: absolute;
-					right: to-rem(28px);
+					left: to-rem(28px);
 					top: 50%;
-					transform: translateY(-50%) rotate(45deg);
+					transform: translateY(-50%) rotate(-135deg);
 				}
 				&.active{
 					color: $COLOR_PRIMERY;
