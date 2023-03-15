@@ -1,12 +1,15 @@
 export default {
-  data() {
-    return {
-      dialogs: []
-    }
-  },
   computed: {
     getPageInfo() {
       return this.$store.getters['common/getPageInfo']
+    },
+    getDialogs() {
+      return this.$store.getters['common/getDialogs']
+    }
+  },
+  watch: {
+    getDialogs() {
+      console.log(this.getDialogs)
     }
   },
   head() {
@@ -26,6 +29,10 @@ export default {
     }
   },
   methods: {
+    _removeDialogs(index) {
+      console.log('mixins ----- _removeDialogs----', index)
+      this.$store.commit('common/removeDialogs', index)
+    },
     _globalMixin() {
       console.log(`mixin - method - _globalMixin -------------`)
     }

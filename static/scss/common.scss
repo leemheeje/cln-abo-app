@@ -16,7 +16,7 @@ button{cursor: pointer;}
 	justify-content: center;
 }
 
-/* 컨텐츠등록 */
+/* 컨텐츠등록 페이지 */
 .page-post-create{
 	$init:100%;
 	.cro-lst{
@@ -60,4 +60,10 @@ button{cursor: pointer;}
 			}
 		}
 	}
+}
+/* 컨텐츠등록 레이어팝업 */
+.po-post-wrap{
+	width: 100%;
+	padding: 10px;
+	.po-form-area{}
 }

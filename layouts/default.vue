@@ -1,8 +1,6 @@
 <template>
   <div class="def-layout">
-    <button @click="test = true">test</button>
     <div class="glb-header">
-      asdfasdfsdf
       <Header />
     </div>
     <div class="glb-container">
@@ -40,14 +38,17 @@
       <Footer />
     </div>
     <bx-modal
-      v-for="(item, index) in dialogs"
+      v-for="({type, message, callback, ...item}, index) in getDialogs"
       :key="index"
+      :options="{
+        message,
+        callback
+      }"
       :value="true"
-      :modal-type="'ALERT'"
-      @close="onModalClse(index)"
-    >
-      asdfasdfsdfgasdfsa
-    </bx-modal>
+      :modal-type="type"
+      v-bind="item"
+      @close="_removeDialogs(index)"
+    />
   </div>
 </template>
 <script>
@@ -65,14 +66,9 @@ export default {
   mixins: [mixinDefault],
   provide() {
     return {
-      getModal: () => {
-        this.dialogs.push('ALERT')
+      getModal: (params) => {
+        this.$store.commit('common/setDialogs', params)
       }
-    }
-  },
-  data() {
-    return {
-      test: false
     }
   },
   created() {
@@ -81,11 +77,7 @@ export default {
     }
   },
   mounted() {},
-  methods: {
-    onModalClse(seq) {
-      this.dialogs = this.dialogs.filter((item, index) => index !== seq)
-    }
-  }
+  methods: {}
 }
 </script>
 <style lang="scss" scoped>

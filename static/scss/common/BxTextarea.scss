@@ -1,0 +1,27 @@
+@import '../util.scss';
+
+.bx-textarea{
+	.b-inp{
+		width: 100%;
+		min-height: to-rem(200px);
+		padding: to-rem(10px);
+		color: $COLOR_BLACK;
+		display: block;
+		font-weight: $FONT_WEIGHT_NORMAL;
+		font-size: to-rem($FONT_SIZE);
+		resize: vertical;
+		border: to-rem(1px) solid $COLOR_DDD;
+		border-radius: to-rem($FORM_BORDER_RADIUS);
+		background: #f5f5f5;
+		&.minh-50{ min-height: to-rem(50px); }
+		&.minh-100{ min-height: to-rem(100px); }
+		&.minh-150{ min-height: to-rem(150px); }
+		&.minh-250{ min-height: to-rem(250px); }
+		&.minh-300{ min-height: to-rem(300px); }
+	}
+	.b-edt{
+		.ql-editor{
+			min-height: to-rem(200px);
+		}
+	}
+}

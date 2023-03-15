@@ -26,8 +26,9 @@ export default {
     '~/plugins/test',
     {
       src: '~/plugins/bootstrap',
-      client: true
-    }
+      mode: 'client'
+    },
+    {src: '~/plugins/quill-editor', mode: 'client'}
   ],
   bootstrapVue: {
     bootstrapCSS: false

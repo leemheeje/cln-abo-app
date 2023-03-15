@@ -29,20 +29,20 @@
 				margin-right: to-rem(10px);
 				.bx-input-field.h-sea-inf{
 					.bx-inner{
-						border-radius: to-rem($FORM_HEIGHT * $SIZE_RATIO_SM);
+						border-radius: to-rem(calc($FORM_HEIGHT * $SIZE_RATIO_SM));
 						min-width: to-rem(320px);
-						padding-right: to-rem(($FORM_HEIGHT * $SIZE_RATIO_SM) / 2);
+						padding-right: to-rem(calc(($FORM_HEIGHT * $SIZE_RATIO_SM) / 2));
 						.bx-inf{
-							text-indent: to-rem(($FORM_HEIGHT * $SIZE_RATIO_SM) / 2);
+							text-indent: to-rem(calc(($FORM_HEIGHT * $SIZE_RATIO_SM) / 2));
 						}
 					}
 				}
 				.h-sea-bt{}
 			}
 			.h-et-atic{
-				width: to-rem($FORM_HEIGHT * $SIZE_RATIO_XSM);
-				height: to-rem($FORM_HEIGHT * $SIZE_RATIO_XSM);
-				border-radius: to-rem($FORM_BORDER_RADIUS * $SIZE_RATIO_XSM);
+				width: to-rem(calc($FORM_HEIGHT * $SIZE_RATIO_XSM));
+				height: to-rem(calc($FORM_HEIGHT * $SIZE_RATIO_XSM));
+				border-radius: to-rem(calc($FORM_BORDER_RADIUS * $SIZE_RATIO_XSM));
 				background-color: $COLOR_F2;
 				.ic{
 					color: #000;

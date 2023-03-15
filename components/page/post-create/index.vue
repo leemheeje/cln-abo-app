@@ -1,17 +1,10 @@
 <template>
   <div class="page-post-create">
-    <button @click="getModal">tsssssss</button>
-    <bx-modal v-model="isModalVisible" :modal-type="MODAL_TYPE.CONFIRM" @close:before="onCloseBefore" @close="onClose"
-      >content</bx-modal
-    >
     <ul class="cro-lst">
-      {{
-        isModalVisible
-      }}
       <!-- foreach:S -->
       <li v-for="(item, index) in [0, 0, 0, 0, 0]" :key="index" class="cr-item">
         <div class="opt-area">
-          <bx-button class="op-btn" title="설정버튼" @click="isModalVisible = !isModalVisible">
+          <bx-button class="op-btn" title="설정버튼" @click="onPostCreate">
             <bx-icon icon="gear-fill" title="설정아이콘" />
           </bx-button>
         </div>
@@ -21,42 +14,50 @@
       </li>
       <!-- foreach:E -->
     </ul>
+    <post-create-modals v-model="visiblePostCreateModal" modal-header="이미지 등록/수정" @close:before="onSubmit">
+      <!-- 포스트 : 텍스트 등록 :S -->
+      <post-create-text v-if="false" v-model="dataPostText" />
+      <!-- 포스트 : 텍스트 등록 :E -->
+      <!-- 포스트 : 이미지 등록 :S -->
+      <post-create-image v-if="true" v-model="dataPostText" />
+      <!-- 포스트 : 이미지 등록 :E -->
+    </post-create-modals>
   </div>
 </template>
 <script>
 import BxButton from '~/components/common/BxButton'
 import BxIcon from '~/components/common/BxIcon'
 import BxModal, {BUTTON_TYPE, MODAL_TYPE} from '~/components/common/BxModal'
+import PostCreateModals from '~/components/page/post-create/common/'
+import postCreateText from '~/components/page/post-create/common/postCreateText'
+import postCreateImage from '~/components/page/post-create/common/postCreateImage'
 
 export default {
   name: 'PostCreate',
-  components: {BxButton, BxIcon, BxModal},
+  components: {BxButton, BxIcon, PostCreateModals, postCreateText, postCreateImage},
   inject: ['getModal'],
   data() {
     return {
       MODAL_TYPE,
-      isModalVisible: false
+      BUTTON_TYPE,
+      visiblePostCreateModal: false,
+      dataPostText: '데이터 텍스트로 가기'
     }
   },
   watch: {
     isModalVisible() {
-      console.log(BUTTON_TYPE)
+      console.log(this.BUTTON_TYPE)
     }
   },
   mounted() {},
   methods: {
-    onClose(params) {
-      console.log('parent-----------------', params)
-    },
-    onCloseBefore(params) {
-      switch (params) {
-        case BUTTON_TYPE.CONFIRM:
-          console.log('오케이버튼오케이버튼오케이버튼오케이버튼')
-          break
-        case BUTTON_TYPE.CANCEL:
-          console.log('취소버튼취소버튼취소버튼취소버튼취소버튼')
-          break
+    onSubmit(params) {
+      if (params === this.BUTTON_TYPE.CONFIRM) {
+        this.getModal(this.dataPostText)
       }
+    },
+    onPostCreate() {
+      this.visiblePostCreateModal = true
     }
   }
 }

@@ -88,7 +88,7 @@
 					background: $COLOR_PRIMERY;
 					.ic{
 						color: #fff;
-						font-size: to-rem($FONT_SIZE_LG * $SIZE_RATIO_LG);
+						font-size: to-rem(calc($FONT_SIZE_LG * $SIZE_RATIO_LG));
 						margin-left: to-rem(6px);
 					}
 				}

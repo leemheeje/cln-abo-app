@@ -1,7 +1,9 @@
 <template>
-  <b-icon class="bx-icon" :class="className[0]" :icon="icon" :font-scale="fontScale" :title="title">
-    <slot />
-  </b-icon>
+  <client-only>
+    <b-icon class="bx-icon" :class="className[0]" :icon="icon" :font-scale="fontScale" :title="title">
+      <slot />
+    </b-icon>
+  </client-only>
 </template>
 <script>
 export default {
