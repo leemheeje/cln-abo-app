@@ -23,7 +23,9 @@
 		border-radius: to-rem($FORM_BORDER_RADIUS);
 		background: #f5f5f5;
 		.bx-infar{
+			position: relative;
 			width: 100%;
+			.bx-vila,
 			.bx-inf{
 				width: 100%;
 				@include input-size;
@@ -33,6 +35,29 @@
 				&:focus{
 					outline: none !important;
 					border: 1px dotted #000;
+				}
+			}
+			.bx-vila{
+				width: calc(100% - 100px);
+				position: relative;
+				display: flex;
+				align-items: center;
+				justify-content: flex-start;
+				.bx-vidm{
+					display: block;
+					white-space: nowrap;
+					overflow: hidden;
+					text-overflow: ellipsis;
+				}
+				&+.bx-inf,
+				&~.bx-inf{
+					cursor: pointer;
+					opacity: 0;
+					position: absolute;
+					left: 0;
+					top: 0;
+					width: 100%;
+					height: 100%;
 				}
 			}
 		}

@@ -2,6 +2,7 @@
   <component
     :is="tag"
     class="bx-input-field"
+    :data-type="type"
     :class="{
       'is-focus': isFocus,
       'is-error': isError,
@@ -11,20 +12,43 @@
   >
     <div class="bx-inner">
       <div class="bx-infar">
-        <label :for="id || localId" class="blind">{{ placeholder || title }}</label>
-        <input
-          :id="id || localId"
-          ref="refBxInputField"
-          class="bx-inf"
-          :value="localValue"
-          :type="type"
-          :title="title"
-          :placeholder="placeholder"
-          @input="onInput"
-          @focus="onFocus"
-          @blur="onBlur"
-          @change="onChange"
-        />
+        <template v-if="type === 'file'">
+          <label :for="id || localId" class="bx-vila">
+            <span class="blind">{{ placeholder || title }}</span>
+            <div class="bx-vidm">
+              {{ localFileValue || `파일을 선택해주세요` }}
+            </div>
+          </label>
+          <input
+            :id="id || localId"
+            ref="refBxInputField"
+            class="bx-inf"
+            type="file"
+            :name="name"
+            :placeholder="placeholder || `파일을 선택해주세요`"
+            :title="title"
+            :multiple="multiple"
+            :accept="accept"
+            @change="onChangeFile"
+          />
+        </template>
+        <template v-else>
+          <label :for="id || localId" class="blind">{{ placeholder || title }}</label>
+          <input
+            :id="id || localId"
+            ref="refBxInputField"
+            class="bx-inf"
+            :value="localValue"
+            :name="name"
+            :type="type"
+            :title="title"
+            :placeholder="placeholder"
+            @input="onInput"
+            @focus="onFocus"
+            @blur="onBlur"
+            @change="onChange"
+          />
+        </template>
       </div>
       <div class="bx-eto">
         <!-- 내용삭제 버튼:S -->
@@ -57,11 +81,16 @@ export default {
     name: {type: String, default: ''},
     filter: {type: String, default: ''},
     tag: {type: String, default: 'span'},
-    type: {type: String, default: 'text'},
+    type: {
+      type: String,
+      default: 'text',
+      validator: (value) => ['text', 'password', 'number', 'file', 'email'].includes(value)
+    },
+    multiple: {type: Boolean, default: false},
+    accept: {type: String, default: '*'},
     title: {type: String, default: ''},
     placeholder: {type: String, default: ''},
     value: {
-      type: String,
       default: ''
       //   validator(value) {
       //     return false
@@ -78,6 +107,23 @@ export default {
       localValue: '',
       localId: '',
       isFocus: false
+    }
+  },
+  computed: {
+    localFileValue() {
+      let _localvalue = this.localValue
+      if (this.type === 'file') {
+        if (typeof _localvalue === 'object') {
+          _localvalue = `${_localvalue[0].name} ${(() => {
+            if (_localvalue.length > 1) {
+              return ` 외 ${_localvalue.length - 1}개 파일`
+            } else {
+              return ''
+            }
+          })()}`
+        }
+      }
+      return _localvalue
     }
   },
   watch: {
@@ -107,6 +153,16 @@ export default {
     }
   },
   methods: {
+    onChangeFile(e) {
+      const files = e.target.files
+      if (!files.length) return false
+      if (this.multiple) {
+        this.localValue = files
+      } else {
+        this.localValue = files[0]?.name
+      }
+      this.$emit('change', files)
+    },
     onInput(e) {
       console.log(`value ------ 1`)
       this.localValue = this.handlerFilterSetValue(this.$refs.refBxInputField?.value)

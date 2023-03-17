@@ -19,7 +19,7 @@
       <post-create-text v-if="false" v-model="dataPostText" />
       <!-- 포스트 : 텍스트 등록 :E -->
       <!-- 포스트 : 이미지 등록 :S -->
-      <post-create-image v-if="true" v-model="dataPostText" />
+      <post-create-image v-if="true" v-model="dataPostImage" />
       <!-- 포스트 : 이미지 등록 :E -->
     </post-create-modals>
   </div>
@@ -41,6 +41,7 @@ export default {
       MODAL_TYPE,
       BUTTON_TYPE,
       visiblePostCreateModal: false,
+      dataPostImage: ['http://www.tcpschool.com/img/logo.png'],
       dataPostText: '데이터 텍스트로 가기'
     }
   },
@@ -53,7 +54,11 @@ export default {
   methods: {
     onSubmit(params) {
       if (params === this.BUTTON_TYPE.CONFIRM) {
-        this.getModal(this.dataPostText)
+        console.log(`
+	  /*********** 등록 팝업 확인버튼 components/page/post-create/index *********/
+	  ${this.dataPostImage} ${this.dataPostText}
+	  /**********************************************************/
+	  `)
       }
     },
     onPostCreate() {
