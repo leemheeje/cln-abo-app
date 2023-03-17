@@ -61,6 +61,16 @@ export default {
     baseURL: '/'
   },
 
+  publicRuntimeConfig: {
+    // 클라이언트나 서버나 어느 곳에서도 사용 가능한 값들
+    // context > $config > api_url
+    api_url: process.env.VUE_APP_API_URL
+  },
+  privateRuntimeConfig: {
+    // 클라이언트나 서버나 어느 곳에서도 사용 가능한 값들
+    api_url: process.env.VUE_APP_API_URL
+  },
+
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {}
 }
