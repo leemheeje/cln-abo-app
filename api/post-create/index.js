@@ -1,6 +1,3 @@
-export default (context) => {
-  //   console.log('contextcontextcontextcontextcontext', context)
-  return {
-    apiText: () => context.$axios.get('/todo').then((data) => data.data.todos)
-  }
-}
+import {ApiUtil} from '~/utils/ApiUtil'
+
+export const apiText = () => ApiUtil.get('/todo').then((data) => data.data.todos)

@@ -5,7 +5,7 @@
 </template>
 <script>
 import postCreate from '~/components/page/post-create/'
-import api from '~/api/post-create/'
+import {apiText} from '~/api/post-create/'
 export const setPageInfo = Object.freeze({
   title: '컨텐츠등록',
   category: [
@@ -28,7 +28,7 @@ export default {
       query,
       ...setPageInfo
     })
-    const list = await api(context).apiText()
+    const list = await apiText()
     return {
       list
     }
