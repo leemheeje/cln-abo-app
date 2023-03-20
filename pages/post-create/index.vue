@@ -1,11 +1,11 @@
 <template>
   <div>
-    <postCreate />
-    <div v-for="(item, index) in dataaa" :key="index">{{ item.jncoProdCd }}</div>
+    <postCreate :list="list" />
   </div>
 </template>
 <script>
 import postCreate from '~/components/page/post-create/'
+import api from '~/api/post-create/'
 export const setPageInfo = Object.freeze({
   title: '컨텐츠등록',
   category: [
@@ -19,26 +19,23 @@ export const setPageInfo = Object.freeze({
 export default {
   name: 'PostCreate',
   components: {postCreate},
-  async asyncData(context) {
-    // const {fullPath, path, name, query} = route
-    // await store.dispatch('common/setPageInfo', {
-    //   fullPath,
-    //   path,
-    //   name,
-    //   query,
-    //   ...setPageInfo
-    // })
-    // console.log(context)
-    const dataaa = await context.$axios
-      .$get('/uhdc/fo/pogg/main/v1/display-prod-list?category=1002&pcMblCd=P&pageNo=1&rowSize=100')
-      .then(({sppsFoDtoList}) => sppsFoDtoList)
+  async asyncData({route, store, ...context}) {
+    const {fullPath, path, name, query} = route
+    await store.dispatch('common/setPageInfo', {
+      fullPath,
+      path,
+      name,
+      query,
+      ...setPageInfo
+    })
+    const list = await api(context).apiText()
     return {
-      dataaa
+      list
     }
   },
   created() {
     if (process.client) {
-      console.log('diag - page------', this.dataaa)
+      console.log('diag - page------', this.list)
     }
   }
 }

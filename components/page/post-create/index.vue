@@ -2,12 +2,15 @@
   <div class="page-post-create">
     <ul class="cro-lst">
       <!-- foreach:S -->
-      <li v-for="(item, index) in apiTestdata" :key="index" class="cr-item">
-        {{ item.a }}
+      <li v-for="(item, index) in list" :key="index" class="cr-item">
         <div class="opt-area">
           <bx-button class="op-btn" title="설정버튼" @click="onPostCreate">
             <bx-icon icon="gear-fill" title="설정아이콘" />
           </bx-button>
+        </div>
+        <div class="ite-box">
+          {{ item.todo }}
+          <img src="" alt="" />
         </div>
       </li>
       <!-- foreach:E -->
@@ -25,28 +28,26 @@
 <script>
 import BxButton from '~/components/common/BxButton'
 import BxIcon from '~/components/common/BxIcon'
-import BxModal, {BUTTON_TYPE, MODAL_TYPE} from '~/components/common/BxModal'
+import {BUTTON_TYPE, MODAL_TYPE} from '~/components/common/BxModal'
 import PostCreateModals from '~/components/page/post-create/common/'
 import postCreateText from '~/components/page/post-create/common/postCreateText'
 import postCreateImage from '~/components/page/post-create/common/postCreateImage'
-import {apiTest} from '~/api/post-create/'
 
 export default {
   name: 'PostCreate',
   components: {BxButton, BxIcon, PostCreateModals, postCreateText, postCreateImage},
   inject: ['getModal'],
+  props: {
+    list: {type: Array, default: () => []}
+  },
   data() {
     return {
       MODAL_TYPE,
       BUTTON_TYPE,
       visiblePostCreateModal: false,
       dataPostImage: ['http://www.tcpschool.com/img/logo.png'],
-      dataPostText: '데이터 텍스트로 가기',
-      apiTestdata: []
+      dataPostText: '데이터 텍스트로 가기'
     }
-  },
-  async fetch() {
-    // this.apiTestdata = await apiTest()
   },
   watch: {
     isModalVisible() {
@@ -59,15 +60,7 @@ export default {
       console.log(process.env.VUE_APP_API_URL)
     }
   },
-  fetchOnServer: false,
-  mounted() {
-    console.log(`
-	/**************************** API TEST *************************/
-	${this.apiTestdata}
-	///**************************** API TEST *************************/
-	`)
-    console.log(this.apiTestdata)
-  },
+  mounted() {},
   methods: {
     onSubmit(params) {
       if (params === this.BUTTON_TYPE.CONFIRM) {
