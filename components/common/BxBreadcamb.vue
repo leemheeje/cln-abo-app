@@ -1,6 +1,6 @@
 <template>
   <div class="bx-breadcamb">
-    <ul class="bx-bred-lst">
+    <ul class="bx-bred-lst test">
       <li class="tpws">
         <bx-button class="b-tx" @click="$router.push('/')">홈</bx-button>
       </li>
