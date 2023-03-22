@@ -1,11 +1,10 @@
 <template>
   <div>
-    <postCreate :list="list" />
+    <postCreate />
   </div>
 </template>
 <script>
 import postCreate from '~/components/page/post-create/'
-import {apiText} from '~/api/post-create/'
 export const setPageInfo = Object.freeze({
   title: '컨텐츠등록',
   category: [
@@ -28,14 +27,10 @@ export default {
       query,
       ...setPageInfo
     })
-    const list = await apiText()
-    return {
-      list
-    }
   },
   created() {
     if (process.client) {
-      console.log('diag - page------', this.list)
+      console.log('diag - pages------', this.list)
     }
   }
 }

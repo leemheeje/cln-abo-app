@@ -16,6 +16,7 @@
 	"dependencies": {
 		"@nuxtjs/axios": "^5.13.6",
 		"@nuxtjs/dotenv": "^1.4.1",
+		"aws-sdk": "^2.1340.0",
 		"bootstrap-vue": "^2.23.1",
 		"core-js": "^3.19.3",
 		"cross-env": "^7.0.3",

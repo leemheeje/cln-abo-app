@@ -1,5 +1,6 @@
 <template>
   <div class="page-post-create">
+    <input type="file" @change="test" />
     <ul class="cro-lst">
       <!-- foreach:S -->
       <li v-for="(item, index) in localList" :key="index" class="cr-item">
@@ -32,7 +33,8 @@ import {BUTTON_TYPE, MODAL_TYPE} from '~/components/common/BxModal'
 import PostCreateModals from '~/components/page/post-create/common/'
 import postCreateText from '~/components/page/post-create/common/postCreateText'
 import postCreateImage from '~/components/page/post-create/common/postCreateImage'
-import {apiText} from '~/api/post-create/'
+import {apiText, apiTextuser} from '~/api/post-create/'
+import {fileUpload} from '~/api/'
 
 export default {
   name: 'PostCreate',
@@ -70,10 +72,17 @@ export default {
     if (process.client) {
       console.log(process.env.NODE_ENV)
       console.log(process.env.VUE_APP_API_URL)
+      console.log('diag - page------')
     }
   },
   mounted() {},
   methods: {
+    async test(e) {
+      const isFileupload = await fileUpload({
+        Body: e.target.files[0]
+      })
+      console.log('isFileuploadisFileuploadisFileuploadisFileuploadisFileupload', isFileupload)
+    },
     async onFetch() {
       this.localList = await apiText()
     },
