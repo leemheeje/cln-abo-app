@@ -1,7 +1,8 @@
 <template>
   <div class="in-box">
+    {{ localImageURL }}
     <img v-for="(item, index) in localImageURL" :key="index" :src="item" style="max-width: 100%" />
-    <bx-input-field v-model="localValue" title="이미지등록수정" multiple type="file" @change="onChange" />
+    <bx-input-field v-model="localValue" title="이미지등록수정" :multiple="true" type="file" @change="onChange" />
   </div>
 </template>
 <script>
@@ -28,7 +29,9 @@ export default {
     value: {
       immediate: true,
       handler(value) {
-        this.localValue = value
+        if (value) {
+          this.localValue = value
+        }
       }
     }
   },

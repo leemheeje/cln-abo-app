@@ -1,5 +1,13 @@
 export default {
+  data() {
+    return {
+      testData: false
+    }
+  },
   computed: {
+    getTestData() {
+      return this.testData
+    },
     getPageInfo() {
       return this.$store.getters['common/getPageInfo']
     },
@@ -35,6 +43,10 @@ export default {
     },
     _globalMixin() {
       console.log(`mixin - method - _globalMixin -------------`)
+    },
+    _testDataUpdate(bool) {
+      console.log('_testDataUpdate---------', bool)
+      this.testData = bool
     }
   }
 }

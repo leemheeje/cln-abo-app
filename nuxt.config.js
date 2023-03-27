@@ -26,6 +26,7 @@ export default {
   plugins: [
     '~/plugins/test',
     '~/plugins/axios',
+    '~/plugins/aws-sdk',
     {
       src: '~/plugins/bootstrap',
       mode: 'client'

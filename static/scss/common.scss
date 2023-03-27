@@ -56,7 +56,7 @@ html label{margin-bottom: 0;}
 			.ite-box{
 				overflow: hidden;
 				width: calc(100% - $buttonSize);
-				min-height: 480px;
+				min-height: to-rem($buttonSize);
 				background: $COLOR_F2;
 			}
 		}

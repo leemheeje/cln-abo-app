@@ -2,37 +2,44 @@
   <div class="bx-aside">
     <div class="bx-aside-inner">
       <ul class="lb-lst">
-        <li v-for="(item, index) in [0, 1]" :key="index" class="tps">
-          <bx-button class="t-txt" :class="{active: !index}">컨텐츠 등록</bx-button>
+        <li v-for="(item, index) in postCategory" :key="index" class="tps">
+          <bx-button class="t-txt">{{ item.content }} 등록</bx-button>
         </li>
       </ul>
+      <bx-button class="bx-btn block primery size-lg" @click="onSubmit">저장</bx-button>
     </div>
   </div>
 </template>
 
 <script>
 import BxButton from '~/components/common/BxButton'
-import BxTagGroup from '~/components/common/BxTagGroup'
+import {apiCategory} from '~/api/post-create/'
 export default {
   components: {BxButton},
   data() {
     return {
-      testdata: [
-        {code: 1, nm: '얼굴합성'},
-        {code: 2, nm: '개학'},
-        {code: 3, nm: '카툰필터'},
-        {code: 4, nm: 'original sound - Mia Mugavero'},
-        {code: 5, nm: 'k - spedupaudios ୨♡୧'},
-        {code: 6, nm: 'Boys a Liar Pt2 Sped Up - Kuya Magik'}
-      ]
+      postCategory: null
     }
   },
+  async fetch() {
+    this.postCategory = await apiCategory()
+  },
+  computed: {
+    getPostList() {
+      return this.$store.getters['post/create/getPostList']
+    }
+  },
+  fetchOnServer: false,
   methods: {
     test(item) {
       console.log(item.nm)
     },
     bxTag(e) {
       console.log(e)
+    },
+    onSubmit() {
+      console.log(this.$store)
+      this.$store.dispatch('post/create/setPostList', this.getPostList)
     }
   }
 }
