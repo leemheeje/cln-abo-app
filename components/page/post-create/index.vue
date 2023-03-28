@@ -9,15 +9,18 @@
       }}
       <li v-for="(item, index) in localList" :key="index" class="cr-item">
         <div class="opt-area">
-          <bx-button class="op-btn" title="설정버튼" @click="onPostCreate(item.post_type)">
+          <bx-button class="op-btn" title="설정버튼" @click="onPostCreate(({code, postType, content} = item))">
             <bx-icon icon="gear-fill" title="설정아이콘" />
+          </bx-button>
+          <bx-button class="op-btn" title="삭제버튼" @click="onPostDelete(item)">
+            <bx-icon icon="x-circle-fill" title="삭제아이콘" />
           </bx-button>
         </div>
         <div class="ite-box">
-          <template v-if="item.post_type === POST_CATEGORY.TEXT">
+          <template v-if="item.postType === POST_CATEGORY.TEXT">
             <div v-html="item.content" />
           </template>
-          <template v-if="item.post_type === POST_CATEGORY.IMAGE">
+          <template v-if="item.postType === POST_CATEGORY.IMAGE">
             <img v-for="(img, i) in item.content" :key="i" :src="img.Location" :alt="img.key" />
           </template>
         </div>
@@ -44,6 +47,7 @@ import postCreateImage from '~/components/page/post-create/common/postCreateImag
 import {apiText} from '~/api/post-create/'
 import {fileUpload} from '~/api/'
 import {cloneDeep} from '~/utils/StringUtil'
+import {ApiUtil} from '~/utils/ApiUtil'
 
 export const POST_CATEGORY = Object.freeze({
   TEXT: 'text',
@@ -62,8 +66,9 @@ export default {
       BUTTON_TYPE,
       POST_CATEGORY,
       visiblePostCreateModal: false,
+      currentCreatePostCode: '',
       dataPostImage: null,
-      dataPostText: '데이터 텍스트로 가기',
+      dataPostText: '',
       localList: null,
       createModalOpenType: '',
       isFileupload: null
@@ -109,7 +114,7 @@ export default {
       this.isFileupload = await fileUpload({
         Body: e.target.files
       })
-      console.log('isFileuploadisFileuploadisFileuploadisFileuploadisFileupload', this.isFileupload)
+      console.log('isFileuploadisFileuploadisF123ileuploadisFileuploadisFileupload', this.isFileupload)
     },
     async onSubmit(params) {
       if (params === this.BUTTON_TYPE.CONFIRM) {
@@ -118,24 +123,49 @@ export default {
 	  ${this.dataPostImage} ${this.dataPostText}
 	  /**********************************************************/
 	  `)
-        const localData = cloneDeep(this.localList)
+        const _data = this.localList.find(({code}) => code === this.currentCreatePostCode) || {}
+        let files = []
         switch (this.createModalOpenType) {
           case this.POST_CATEGORY.TEXT:
-            localData[0].content = this.dataPostText
+            // localData = this.dataPostText
+            this.$store.commit('post/create/setPostList', {..._data, content: this.dataPostText})
+            this.dataPostText = ''
             break
           case this.POST_CATEGORY.IMAGE: // 일단 직접삽입 ㅠㅠ dynamoDB연결
-            localData[1].content = await fileUpload({
+            files = await fileUpload({
               Body: this.dataPostImage
             })
+            this.$store.commit('post/create/setPostList', {..._data, content: files})
             // localData[1].content = await '이미지등록되'
             break
         }
-        this.$store.commit('post/create/setPostList', localData)
       }
     },
-    onPostCreate(type) {
+    onPostCreate({code, postType, content, ...item}) {
       this.visiblePostCreateModal = true
-      this.createModalOpenType = type
+      this.createModalOpenType = postType
+      this.currentCreatePostCode = code
+      switch (this.createModalOpenType) {
+        case this.POST_CATEGORY.TEXT:
+          this.dataPostText = content
+          break
+      }
+    },
+    onPostDelete(item) {
+      const fnDel = () => this.$store.commit('post/create/deletePostList', item)
+      if (item.content) {
+        this.getModal({
+          type: this.MODAL_TYPE.CONFIRM,
+          message: '컨텐츠내용이 있습니다.<br/>삭제하시겠습니까?',
+          callback: (button) => {
+            if (button === this.BUTTON_TYPE.CONFIRM) {
+              fnDel()
+            }
+          }
+        })
+      } else {
+        fnDel()
+      }
     }
   }
 }

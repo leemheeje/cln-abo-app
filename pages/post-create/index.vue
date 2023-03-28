@@ -5,6 +5,7 @@
 </template>
 <script>
 import postCreate from '~/components/page/post-create/'
+import {ApiUtil} from '~/utils/ApiUtil'
 export const setPageInfo = Object.freeze({
   title: '컨텐츠등록',
   category: [
@@ -27,6 +28,10 @@ export default {
       query,
       ...setPageInfo
     })
+  },
+  fetchOnServer: false,
+  async fetch() {
+    await this.$store.dispatch('post/create/setPostList', ApiUtil.localStorage.getItem('post-list') || [])
   },
   created() {
     if (process.client) {

@@ -3,7 +3,7 @@
     <div class="bx-aside-inner">
       <ul class="lb-lst">
         <li v-for="(item, index) in postCategory" :key="index" class="tps">
-          <bx-button class="t-txt">{{ item.content }} 등록</bx-button>
+          <bx-button class="t-txt" @click="onAddPostList(item.value)">{{ item.content }} 등록</bx-button>
         </li>
       </ul>
       <bx-button class="bx-btn block primery size-lg" @click="onSubmit">저장</bx-button>
@@ -14,11 +14,18 @@
 <script>
 import BxButton from '~/components/common/BxButton'
 import {apiCategory} from '~/api/post-create/'
+import {POST_CATEGORY} from '~/components/page/post-create/'
+import {getUnqID} from '~/utils/StringUtil'
+/**
+ * {post_type: 'text', // text||image
+      content: ''}
+*/
 export default {
   components: {BxButton},
   data() {
     return {
-      postCategory: null
+      postCategory: null,
+      POST_CATEGORY
     }
   },
   async fetch() {
@@ -31,11 +38,12 @@ export default {
   },
   fetchOnServer: false,
   methods: {
-    test(item) {
-      console.log(item.nm)
-    },
-    bxTag(e) {
-      console.log(e)
+    onAddPostList(value) {
+      this.$store.commit('post/create/setPostList', {
+        code: getUnqID('POST_ITEM'),
+        postType: value,
+        content: ''
+      })
     },
     onSubmit() {
       console.log(this.$store)

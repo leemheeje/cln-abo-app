@@ -28,6 +28,12 @@
       <div class="bpw-cont">
         <div class="bc-midc">
           <!-- 컨텐츠 -->
+          <template v-if="postType === POST_CATEGORY.TEXT">
+            <div v-html="content" />
+          </template>
+          <template v-if="postType === POST_CATEGORY.IMAGE">
+            <img v-for="(img, i) in content" :key="i" :src="img.Location" :alt="img.key" />
+          </template>
         </div>
         <div class="bc-stic">
           <!-- 팔로우 , 좋아요 및 공유 등등 -->
@@ -86,10 +92,20 @@
 </template>
 <script>
 import BxButton from '~/components/common/BxButton'
-import BxIcon from '~/components/common/BxIcon.vue'
+import BxIcon from '~/components/common/BxIcon'
+import {POST_CATEGORY} from '~/components/page/post-create/'
 export default {
   name: 'BxPost',
-  components: {BxButton, BxIcon}
+  components: {BxButton, BxIcon},
+  props: {
+    postType: {type: String, default: ''},
+    content: {type: [String, Array], default: ''}
+  },
+  data() {
+    return {
+      POST_CATEGORY
+    }
+  }
 }
 </script>
 <style lang="scss" scoped>
