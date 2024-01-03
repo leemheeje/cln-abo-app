@@ -2,7 +2,7 @@
   <div class="bx-breadcamb">
     <ul class="bx-bred-lst">
       <li class="tpws">
-        <bx-button class="b-tx" @click="$router.push('/')">홈</bx-button>
+        <bx-button class="b-tx" @click="$router.push('/')">홈 verceltest</bx-button>
       </li>
       <template v-if="isItemsTypeArray">
         <li v-for="({path, name}, index) in items" :key="index" class="tpws" :class="{first: !index}">
