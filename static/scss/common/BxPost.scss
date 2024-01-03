@@ -1,0 +1,147 @@
+@import '../util.scss';
+
+
+.bx-post{
+	.bpw-top{
+		display: flex;
+		width: 100%;
+		.bc-thumb{
+			@include fn_thumbnail()
+		}
+		.bc-cop{
+			width: calc(100% - to-rem(56px));
+			display: flex;
+			flex-direction: column;
+			.b-ti{
+				cursor: pointer;
+				text-align: left;
+				font-size: to-rem($FONT_SIZE);
+				line-height: 1.5;
+				color: $COLOR_BLACK;
+				font-weight: $FONT_WEIGHT_NORMAL;
+				display: flex;
+				align-items: flex-end;
+				.b-n{
+					font-size: to-rem($FONT_SIZE_XSM);
+					margin-left: to-rem(10px);
+					color: $COLOR_666;
+					font-weight: $FONT_WEIGHT_REGULAR;
+				}
+			}
+			.b-pag{
+				margin-top: to-rem(5px);
+				font-size: to-rem($FONT_SIZE);
+				font-weight: $FONT_WEIGHT_REGULAR;
+				color: $COLOR_BLACK;
+				@include muti-ellipsis(3, 4.5rem);
+			}
+			.b-dt{
+				margin-top: to-rem(10px);
+				font-size: to-rem($FONT_SIZE_XSM);
+				color: $COLOR_888;
+				line-height: 1.5;
+				font-weight: $FONT_WEIGHT_REGULAR;
+			}
+		}
+	}
+	.bpw-cont{
+		position: relative;
+		padding-left: to-rem(66px);
+		display: flex;
+		justify-content: space-between;
+		margin-top: to-rem(25px);
+		.bc-midc{
+			width: calc(100% - to-rem(66px));
+			min-height: to-rem(50px);
+			border-radius: to-rem($FORM_BORDER_RADIUS);
+		}
+		.bc-stic{
+			position: sticky;
+			right: 0;
+			top: to-rem(calc($HEADER_HEIGHT + 40px));
+			bottom: 0;
+			height: fit-content;
+			display: flex;
+			flex-direction: column;
+			.st-ag{
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				.st-t{
+					display: block;
+					margin-top: to-rem(3px);
+					font-size: to-rem($FONT_SIZE_XSM);
+					font-weight: $FONT_WEIGHT_BOLD;
+					color: #000;
+					letter-spacing: -.5px;
+				}
+			}
+			.st-g{
+				width: to-rem(56px);
+				height: to-rem(56px);
+				border-radius: 50%;
+				background: $COLOR_F2;
+				.ic{
+					color: #000;
+				}
+				&.primery{
+					background: $COLOR_PRIMERY;
+					.ic{
+						color: #fff;
+						font-size: to-rem(calc($FONT_SIZE_LG * $SIZE_RATIO_LG));
+						margin-left: to-rem(6px);
+					}
+				}
+			}
+			.st-ag+.st-ag{
+				margin-top: to-rem(10px);
+			}
+		}
+	}
+	.bpw-btm{
+		margin-top: to-rem(25px);
+		padding-left: to-rem(66px);
+		padding-right: to-rem(66px);
+		.b-tt{
+			font-size: to-rem($FONT_SIZE);
+			color: $COLOR_BLACK;
+		}
+		.bc-reply{
+			margin-top: to-rem(15px);
+			padding: to-rem(25px) to-rem(25px);
+			padding-left: to-rem(70px);
+			border-radius: to-rem(16px);
+			background: $COLOR_F5;
+			position: relative;
+			width: 100%;
+			.bc-thumb{
+				@include fn_thumbnail(sm);
+				position: absolute;
+				left: to-rem(25px);
+				top: to-rem(25px);
+			}
+			.b-ti{
+				cursor: pointer;
+				display: flex;
+				align-items: flex-end;
+				font-size: to-rem($FONT_SIZE_SM);
+				color: $COLOR_BLACK;
+				font-weight: $FONT_WEIGHT_NORMAL;
+				.b-n{
+					font-size: to-rem($FONT_SIZE_XSM);
+					margin-left: to-rem(5px);
+					color: $COLOR_666;
+					font-weight: $FONT_WEIGHT_REGULAR;
+				}
+			}
+			.b-pag{
+				text-align: left;
+				font-size: to-rem($FONT_SIZE_SM);
+				font-weight: $FONT_WEIGHT_REGULAR;
+				color: $COLOR_444;
+				margin-top: to-rem(5px);
+				@include muti-ellipsis
+			}
+		}
+	}
+}

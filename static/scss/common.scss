@@ -1,0 +1,76 @@
+@import './util.scss';
+@import './font.css';
+
+html{-webkit-tap-highlight-color: rgba(0,0,0,0); font-size: $FONT_INITIAL_SIZE;}
+html body{font-size: $FONT_INITIAL_SIZE; font-family: $FONT_FAMILY; letter-spacing: -.45px; line-height: 1.5; color: #000; background-color: transparent; font-weight: initial;}
+*{margin: 0; padding: 0; border: none; appearance: none; box-sizing: border-box;}
+button,input,textarea,select{box-shadow: none; border:none; margin: 0; font-family: inherit; font-size: inherit; line-height: inherit;text-transform: none; background: inherit;}
+img{border:none;max-width: 100%;}
+button{cursor: pointer;}
+html label{margin-bottom: 0;}
+.blind{position: absolute; left: 0; top: 0; width: 0; height: 0; opacity: 0; overflow: hidden;}
+.inner-section{min-width: $DEVICE_MIN_WIDTH; width: 100%;}
+.INLINE_FLEX{
+	display: inline-flex;
+}
+.INLINE_FLEX.CENTER_CENTER{
+	align-items: center;
+	justify-content: center;
+}
+
+/* 컨텐츠등록 페이지 */
+.page-post-create{
+	$init:100%;
+	.cro-lst{
+		list-style: none;
+		display: flex;
+		flex-direction: column;
+		.cr-item+.cr-item{
+			margin-top: to-rem(10px);
+		}
+		.cr-item{
+			$buttonSize: 45px;
+			display: flex;
+			flex-wrap: wrap;
+			position: relative;
+			.opt-area{
+				display: flex;
+				align-items: center;
+				flex-direction: column;
+				justify-content: flex-end;
+				position: sticky;
+				height: fit-content;
+				left: to-rem(-$buttonSize);
+				top: to-rem(100px);
+				.op-btn{
+					width: to-rem($buttonSize);
+					height: to-rem($buttonSize);
+					border-radius: to-rem(3px);
+					border-top-right-radius: 0;
+					border-bottom-right-radius: 0;
+					background: $COLOR_DDD;
+					border-right: to-rem(2px) solid #fff;
+					.bx-icon{
+						color: $COLOR_SECONDARY;
+						font-size: 1rem;
+					}
+					&+.op-btn{
+						margin-top: to-rem(2px);
+					}
+				}
+			}
+			.ite-box{
+				overflow: hidden;
+				width: calc(100% - $buttonSize);
+				min-height: to-rem($buttonSize);
+				background: $COLOR_F2;
+			}
+		}
+	}
+}
+/* 컨텐츠등록 레이어팝업 */
+.po-post-wrap{
+	width: 100%;
+	padding: 10px;
+	.po-form-area{}
+}

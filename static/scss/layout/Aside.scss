@@ -1,0 +1,91 @@
+@import '../util.scss';
+
+.bx-aside {
+	padding: to-rem(20px) 0;
+	.lb-lst{
+		list-style: none;
+		margin-bottom: to-rem(30px);
+		.tps{
+			.t-txt{
+				display: block;
+				width: 100%;
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				text-align: left;
+				font-size: to-rem($FONT_SIZE_SM);
+				padding: to-rem(18px) to-rem(28px);
+				padding-left: to-rem(60px);
+				border-radius: to-rem(16px);
+				box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.05);
+				background-color: #fff;
+				letter-spacing: -0.42px;
+				font-weight: $FONT_WEIGHT_REGULAR;
+				color: $COLOR_BLACK;
+				position: relative;
+				&:after{
+					content: '';
+					width: to-rem(5px);
+					height: to-rem(5px);
+					border: to-rem(1px) solid #999;
+					border-left: none;
+					border-bottom: none;
+					position: absolute;
+					left: to-rem(28px);
+					top: 50%;
+					transform: translateY(-50%) rotate(-135deg);
+				}
+				&.active{
+					color: $COLOR_PRIMERY;
+					&:after{
+						border-color: $COLOR_PRIMERY;
+					}
+				}
+			}
+		}
+		.tps+.tps{
+			margin-top: to-rem(5px);
+		}
+	}
+	.up-alst-area{
+		margin-bottom: to-rem(30px);
+		.u-alst{
+			list-style: none;
+			.tps{
+				.t-txt{
+					width: 100%;
+					justify-content: flex-start;
+					text-align: left;
+				}
+				.bc-thumb{
+					@include fn_thumbnail(xsm)
+				}
+				.b-ti{
+					font-size: to-rem($FONT_SIZE_SM);
+					display: flex;
+					flex-direction: column;
+					color: $COLOR_BLACK;
+					font-weight: $FONT_WEIGHT_NORMAL;
+					.b-n{
+						font-size: to-rem($FONT_SIZE_XSM);
+						color: $COLOR_888;
+						font-weight: $FONT_WEIGHT_REGULAR;
+					}
+				}
+			}
+			.tps+.tps{
+				margin-top: to-rem(8px);
+			}
+		}
+	}
+	.b-tit{
+		font-size: to-rem($FONT_SIZE_SM);
+		color: $BUTTON_COLOR_SECONDARY;
+		text-align: left;
+		display: flex;
+		justify-content: flex-start;
+		font-weight: $FONT_WEIGHT_REGULAR;
+		line-height: 1.5;
+		margin-bottom: to-rem(15px);
+	}
+}

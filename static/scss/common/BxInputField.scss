@@ -1,0 +1,152 @@
+@import '../util.scss';
+@mixin input-size($size:md){
+	color: $COLOR_BLACK;
+	display: block;
+	font-weight: $FONT_WEIGHT_NORMAL;
+	text-indent: to-rem(10px);
+	background: inherit;
+	@if $size == md{
+		height: to-rem($FORM_HEIGHT);
+		font-size: to-rem($FONT_SIZE);
+	} @else if $size == xsm{
+		height: to-rem(calc($FORM_HEIGHT * $SIZE_RATIO_XSM));
+		font-size: to-rem(calc($FONT_SIZE * $SIZE_RATIO_XSM));
+	} @else if $size == sm{
+		height: to-rem(calc($FORM_HEIGHT * $SIZE_RATIO_SM));
+		font-size: to-rem(calc($FONT_SIZE * $SIZE_RATIO_SM));
+	}
+}
+.bx-input-field{
+	.bx-inner{
+		display: flex;
+		border: to-rem(1px) solid $COLOR_DDD;
+		border-radius: to-rem($FORM_BORDER_RADIUS);
+		background: #f5f5f5;
+		.bx-infar{
+			position: relative;
+			width: 100%;
+			.bx-vila,
+			.bx-inf{
+				width: 100%;
+				@include input-size;
+				&::placeholder{
+					color: #999;
+				}
+				&:focus{
+					outline: none !important;
+					border: 1px dotted #000;
+				}
+			}
+			.bx-vila{
+				width: calc(100% - 100px);
+				position: relative;
+				display: flex;
+				align-items: center;
+				justify-content: flex-start;
+				.bx-vidm{
+					display: block;
+					white-space: nowrap;
+					overflow: hidden;
+					text-overflow: ellipsis;
+				}
+				&+.bx-inf,
+				&~.bx-inf{
+					cursor: pointer;
+					opacity: 0;
+					position: absolute;
+					left: 0;
+					top: 0;
+					width: 100%;
+					height: 100%;
+				}
+			}
+		}
+		.bx-eto{
+			display: flex;
+			align-items: center;
+			justify-content: end;
+			.de-btn-ar{
+				padding: to-rem(3px);
+				.de-btn{
+					$width : to-rem(calc(35px / 2));
+					$height : to-rem(calc(35px / 2));
+					width: $width;
+					height: $height;
+					font-size: 0;
+					line-height: 0;
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					border-radius: 50%;
+					background: $COLOR_DDD;
+					position: relative;
+					cursor: pointer;
+					&:after, &:before{
+						content: '';
+						width: calc($width/2);
+						height: 1px;
+						position: absolute;
+						left: 50%;
+						top: 50%;
+						background: #fff;
+						transform-origin: center center;
+						margin-top: -1px;
+						margin-left: 0px;
+					}
+					&:before{
+						transform: translateX(-50%) rotate(45deg);
+					}
+					&:after{
+						transform: translateX(-50%) rotate(-45deg);
+					}
+				}
+			}
+		}
+	}
+	&.is-focus .bx-inner{
+		background: #fff;
+	}
+	&.is-error .bx-inner{
+		border-color: $COLOR_ERROR;
+	}
+	&.size{
+		&-md{
+			.bx-inner{
+				border-radius: to-rem(calc($FORM_BORDER_RADIUS * $SIZE_RATIO_MD));
+			}
+			.bx-infar .bx-inf{
+				@include input-size(md);
+			}
+		}
+		&-xsm{
+			.bx-inner{
+				border-radius: to-rem(calc($FORM_BORDER_RADIUS * $SIZE_RATIO_XSM));
+			}
+			.bx-infar .bx-inf{
+				@include input-size(xsm);
+			}
+		}
+		&-sm{
+			.bx-inner{
+				border-radius: to-rem(calc($FORM_BORDER_RADIUS * $SIZE_RATIO_SM));
+			}
+			.bx-infar .bx-inf{
+				@include input-size(sm);
+			}
+		}
+	}
+	.bx-msgs{
+		display: flex;
+		margin-top: to-rem(5px);
+		font-size: to-rem($FONT_SIZE_SM);
+		word-break: break-all;
+		color: $COLOR_BLACK;
+		font-weight: $FONT_WEIGHT_NORMAL;
+	}
+	&.is-error .bx-msgs{
+		color: $COLOR_ERROR;
+	}
+	&.is-complete .bx-msgs{
+		color: $COLOR_COMPLETE;
+	}
+}

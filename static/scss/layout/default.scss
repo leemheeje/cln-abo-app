@@ -1,0 +1,85 @@
+@import '../util.scss';
+
+
+.def-layout {
+	padding-top: to-rem($HEADER_HEIGHT);
+  .glb-header {
+  }
+  .glb-container {
+	.glb-cont-inner{
+		display: flex;
+		flex-wrap: wrap;
+		background: #fff;
+		justify-content: center;
+		min-height: 100vh;
+		min-height: FN_CONTAINER_HEIGHT();
+	}
+	.cont-injt{
+		position: sticky;
+		left: 0; 
+		top: 0;
+		max-width: to-rem(1310px);
+		margin-left: auto;
+		margin-right: auto;
+		display: flex;
+		align-items: flex-end;
+		padding: to-rem(30px) to-rem(20px);
+		padding-bottom: to-rem(10px);
+		.cnt-tit{
+			.c-tit{
+			font-size: to-rem($FONT_SIZE_XXLG);
+			font-weight: $FONT_WEIGHT_BOLD;
+			color: $COLOR_BLACK;
+			line-height: 1.5;
+			word-break: break-all;
+			}
+			.b-tit{
+				margin-top: to-rem(8px);
+				font-size: to-rem($FONT_SIZE_SM);
+				font-weight: $FONT_WEIGHT_REGULAR;
+				line-height: 1.53;
+				letter-spacing: -0.45px;
+				text-align: left;
+				color: $COLOR_888;
+			}
+			max-width: 100%;
+			text-align: left;
+		}
+		
+	}
+	.gl-aside{
+		width: to-rem(450px);
+		height: FN_CONTAINER_HEIGHT();
+		overflow: hidden;
+		overflow-y: auto;
+		position: sticky;
+		left: 0;
+		top: to-rem(calc($HEADER_HEIGHT + 0px));
+		padding-top: to-rem(20px);
+		padding-left: to-rem(20px);
+		.c-tit{
+			font-size: to-rem($FONT_SIZE_XXLG);
+			font-weight: $FONT_WEIGHT_BOLD;
+			color: $COLOR_BLACK;
+			line-height: 1.5;
+			min-height: to-rem(33px);
+			word-break: break-all;
+			margin-bottom: to-rem(15px);
+		}
+
+	}
+	.gl-contents{
+		// margin-left: auto;
+		// margin-right: auto;
+		.cnt-bred{
+			margin-left: auto;
+			margin-right: 0;
+		}
+	}
+	.inner-section{
+		min-width: 0;
+		width: to-rem($DEVICE_CONTENT_WIDTH);
+		padding: to-rem(20px) to-rem($DEVICE_AUTO_MARGIN);
+	}
+  }
+}

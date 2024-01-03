@@ -1,0 +1,101 @@
+/* device */
+$DEVICE_MIN_WIDTH: 1280px;
+$DEVICE_CONTENT_WIDTH: 860px;
+$DEVICE_AUTO_MARGIN: 20px;
+$HEADER_HEIGHT : 81px;
+$FOOTER_HEIGHT : 0px;
+@function FN_CONTAINER_HEIGHT($h:$HEADER_HEIGHT,$f:$FOOTER_HEIGHT){
+	/* 100vh - 헤더높이 - 풋터높이*/
+	@return calc(100vh - to-rem($h) - to-rem($f));
+}
+/* size-ratio */
+$SIZE_RATIO_XSM : .75;
+$SIZE_RATIO_SM : .8;
+$SIZE_RATIO_MD : 1;
+$SIZE_RATIO_LG : 1.2;
+$SIZE_RATIO_XLG : 1.35;
+/* color */
+$COLOR_BLACK : #000;
+$COLOR_WHITE : #fff;
+$COLOR_F5: #f5f5f5;
+$COLOR_F2: #f2f2f2;
+$COLOR_DDD: #ddd;
+$COLOR_BBB: #bbb;
+$COLOR_888: #888;
+$COLOR_666: #666;
+$COLOR_444: #444;
+$COLOR_222: #222;
+$COLOR_PRIMERY: rgba(254, 44, 85, 1);
+$COLOR_SECONDARY: #2F2F4C;
+$COLOR_ERROR : #fd302c;
+$COLOR_COMPLETE : blue;
+/* btn-color */
+$BUTTON_COLOR_PRIMERY: $COLOR_PRIMERY;
+$BUTTON_COLOR_SECONDARY: #5a6268;
+$BUTTON_COLOR_SUCCESS: #28a745;
+$BUTTON_COLOR_DANGER: #c82333;
+$BUTTON_COLOR_WARNING : #e0a800;
+$BUTTON_COLOR_INFO : #17a2b8;
+$BUTTON_COLOR_DARK : #000;
+/* form-height */
+$FORM_HEIGHT : 45px;
+$FORM_BORDER_RADIUS: 8px;
+/* fonts */
+$FONT_FAMILY: "nskr",-apple-system,"droid sans fallback","Apple SD Gothic Neo","AppleGothic","Malgun Gothic",Dotum,sans-serif;
+$FONT_INITIAL_SIZE: 16px;
+$FONT_SIZE_XSM: 12px;
+$FONT_SIZE_SM: 14px;
+$FONT_SIZE: 16px;
+$FONT_SIZE_LG: 18px;
+$FONT_SIZE_XLG: 20px;
+$FONT_SIZE_XXLG: 22px;
+$FONT_WEIGHT_BOLD : 700;
+$FONT_WEIGHT_NORMAL : 500;
+$FONT_WEIGHT_REGULAR : 300;
+/* flex */
+/* convert rem */
+@function to-rem($v1){
+	@return calc($v1 / $FONT_INITIAL_SIZE) * 1rem
+}
+/* mixins */
+/* @include align-center or align-center('inline-flex') */
+@mixin align-center($flex:'flex'){
+	display: $flex;
+	align-items: center;
+	justify-content: center;
+}
+@mixin muti-ellipsis($lines:2, $maxHeight: 2.5rem){
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: $lines;
+	line-height: calc($maxHeight / $lines);
+	max-height: $maxHeight;
+}
+
+@mixin fn_thumbnail($size: md){
+	cursor: pointer;
+	display: block;
+	overflow: hidden;
+	border-radius: 50%;
+	background: #000;
+	.img{
+		width: 100%;
+		height: 100%;
+		font-size: 0;
+	}
+	@if $size == md {
+		margin-right: to-rem(10px);
+		width: to-rem(56px);
+		height: to-rem(56px);
+	} @else if $size == sm {
+		margin-right: to-rem(8px);
+		width: to-rem(36px);
+		height: to-rem(36px);
+	} @else if $size == xsm {
+		margin-right: to-rem(5px);
+		width: to-rem(30px);
+		height: to-rem(30px);
+	}
+}

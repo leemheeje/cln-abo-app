@@ -1,0 +1,44 @@
+{
+	"name": "src",
+	"version": "1.0.0",
+	"private": true,
+	"scripts": {
+		"dev": "cross-env NODE_ENV=development nuxt --host clr-post.co.kr --port 3333",
+		"local": "cross-env NODE_ENV=local nuxt --port 3333",
+		"dev-env": "nuxt dev --dotenv .env.development --port 3333",
+		"build": "nuxt build",
+		"start": "cross-env NODE_ENV=production nuxt start",
+		"generate": "nuxt generate",
+		"lint:js": "eslint --ext \".js,.vue\" --ignore-path .gitignore .",
+		"lint": "npm run lint:js",
+		"lintfix": "npm run lint:js -- --fix"
+	},
+	"dependencies": {
+		"@nuxtjs/axios": "^5.13.6",
+		"@nuxtjs/dotenv": "^1.4.1",
+		"aws-sdk": "^2.1340.0",
+		"bootstrap-vue": "^2.23.1",
+		"core-js": "^3.19.3",
+		"cross-env": "^7.0.3",
+		"lodash": "^4.17.21",
+		"nuxt": "^2.15.8",
+		"vue": "^2.6.14",
+		"vue-quill-editor": "^3.0.6",
+		"vue-server-renderer": "^2.6.14",
+		"vue-template-compiler": "^2.6.14",
+		"webpack": "^4.46.0"
+	},
+	"devDependencies": {
+		"@babel/eslint-parser": "^7.16.3",
+		"@nuxtjs/eslint-config": "^8.0.0",
+		"@nuxtjs/eslint-module": "^3.0.2",
+		"eslint": "^8.35.0",
+		"eslint-config-prettier": "^8.6.0",
+		"eslint-plugin-nuxt": "^3.1.0",
+		"eslint-plugin-prettier": "^4.2.1",
+		"eslint-plugin-vue": "^8.2.0",
+		"prettier": "^2.8.4",
+		"sass": "^1.58.3",
+		"sass-loader": "^10.2.1"
+	}
+}

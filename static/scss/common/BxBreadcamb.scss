@@ -1,0 +1,34 @@
+@import '../util.scss';
+
+.bx-breadcamb{
+	.bx-bred-lst{
+		list-style: none;
+		display: flex;
+		align-items: center;
+		.tpws{
+			position: relative;
+			.b-tx{
+				font-size: to-rem($FONT_SIZE_XSM);
+				color: $COLOR_666;
+				font-weight: $FONT_WEIGHT_REGULAR;
+				display: block;
+			}
+		}
+		.tpws+.tpws{
+			margin-left: to-rem(10px);
+			padding-left: to-rem(10px);
+			&:before{
+				content: '';
+				width: to-rem(4px);
+				height: to-rem(4px);
+				border: 1px solid #888;
+				border-right: none;
+				border-top: none;
+				position: absolute;
+				left: 0;
+				top: 50%;
+				transform: translateY(-50%) rotate(45deg)
+			}
+		}
+	}
+}
