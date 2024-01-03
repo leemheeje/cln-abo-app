@@ -3,7 +3,7 @@
     <ul class="bx-bred-lst">
       <li class="tpws">
         <bx-button class="b-tx" @click="$router.push('/')">홈 2차verceltest</bx-button>
-      </li>3
+      </li>
       <template v-if="isItemsTypeArray">
         <li v-for="({path, name}, index) in items" :key="index" class="tpws" :class="{first: !index}">
           <bx-button v-if="!useSlot" class="b-tx" @click="$router.push(path)">
