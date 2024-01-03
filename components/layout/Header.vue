@@ -8,7 +8,7 @@
         <div class="h-artc-area">
           <div class="h-search-ar">
             <!-- 검색바 영역:S -->
-            <bx-input-field class="size-sm h-sea-inf" placeholder="검색어를 입력해주세요">
+            <bx-input-field class="size-sm h-sea-inf" placeholder="검색어를 stg-combine 입력해주세요">
               <template #etc-area>
                 <bx-button class="h-sea-bt" title="검색하기 버튼">
                   <bx-icon icon="search" title="검색하기 아이콘" />
